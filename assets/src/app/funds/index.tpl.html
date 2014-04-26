@@ -1,0 +1,37 @@
+<h2>Funds</h2>
+
+<div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-8">
+        <h3>All Funds</h3>
+        <ul>
+            <li ng-repeat="fund in funds">{{fund.title}} <b>by</b> {{fund.user.username }}, <span am-time-ago="todo.updatedAt"></span> - <button type="button" class="btn btn-danger btn-xs" ng-click="destroyTodo(todo)"><i class="fa fa-trash-o"></i></button></li>
+        </ul>
+    </div>
+    <div class="col-md-12">
+
+        <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+        <p><strong>Sorting:</strong> {{tableParams.sorting()|json}}
+
+        <table ng-table="tableParams" class="table">
+            <tr ng-repeat="fund in  $data">
+
+                <td data-title="'Fund Name'" sortable="'title'">
+                    <span ng-class="{ 'plus': message.title == '666','minus': fund.title != '666' }">{{ fund.title}}</span>
+                </td>
+                <td data-title="'title'" sortable="'title'">
+                    <span ng-class="{ 'fa fa-info-circle': fund.title == '666','fa fa-dot-circle-o': todo.title != '666' }">{{ fund.title}}</span>
+                </td>
+                <td  data-title="'isComplete'" sortable="'isComplete'">
+                    {{fund.isComplete }}
+                </td>
+
+
+            </tr>
+        </table>
+
+    </div>
+
+</div>

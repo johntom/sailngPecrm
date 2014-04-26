@@ -1,0 +1,188 @@
+<style>
+body {
+padding: 10px !important;
+}
+
+.ng-table-rowselected tr {
+    cursor: pointer;
+}
+.emp{
+ background-color: #ffff00 ;
+ color: lightcoral;
+}
+.ng-table .plus, .ng-table .minus {
+font-weight: bold;
+padding-left: 18px;
+position: relative;
+}
+.ng-table .plus:before, .ng-table .minus:before {
+content:"";
+border-width: 4px;
+border-style:solid;
+left: 8px;
+top: 50%;
+position: absolute;
+margin-top: -2px;
+}
+.ng-table .plus {
+color: green;
+}
+.ng-table .plus:before {
+border-color: green;
+border-top:none;
+border-left:4px solid transparent;
+border-right:4px solid transparent;
+}
+.ng-table .minus {
+color: red;
+}
+.ng-table .minus:before {
+border-color: red;
+border-bottom:none;
+border-left:4px solid transparent;
+border-right:4px solid transparent;
+}
+</style>
+<h2>Messages</h2>
+<p>Open this page in two browsers and see how easy Sails.js makes realtime applications!</p>
+
+<p ng-show="!currentUser"><a href="/register">Register</a> to post a message!</p>
+
+<!--<i class="fa fa-dot-circle-o"></i>-->
+<div class="row">
+    <div class="col-md-5">
+        <form role="form" ng-submit="createMessage(newMessage)">
+            <div class="form-group">
+                <label for="messageTitle">Your Message <i class="fa fa-comments"></i></label>
+                <input type="text" ng-model="newMessage.title" class="form-control" id="messageTitle"
+                       ng-disabled="!currentUser">
+
+                <label for="messageDate">Date/Time  </label>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="EEE MM/dd/yyyy"
+                                   ng-model="newMessage.cardate" is-open="opened" min="minDate" max="'2015-06-22'"
+                                   datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                   ng-required="true" close-text="Close"/>
+                            <button class="btn btn-default" ng-click="open($event)"><i class="fa fa-calendar"></i></button>
+                    </div>
+                    <!--<div class="col-sm-1">-->
+                      <!--<button class="btn btn-default" ng-click="open($event)"><i class="fa fa-calendar"></i></button>-->
+                    <!--</div>-->
+                    <div class="col-sm-6">
+                        <div ng-model="newMessage.cartime" ng-change="changed()"  style="display:inline-block;">
+                            <timepicker hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+
+                        <!--<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="newMessage.cardate" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />-->
+                        <!--<span class="input-group-btn">-->
+
+
+                        </div>
+                        <!--</span>-->
+                        <!--</p>-->
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-4">
+                    <button class="btn btn-sm btn-info" ng-click="today()">Today</button>
+                    <!--<button class="btn btn-sm btn-default" ng-click="dt = '2009-08-24'">2009-08-24</button>-->
+                    <!--<button class="btn btn-sm btn-success" ng-click="toggleWeeks()" tooltip="For inline datepicker">Toggle Weeks</button>-->
+                    <button class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+                    </div>
+
+                    <div class="col-xs-3">
+                        Hours step is:
+                        <select class="form-control" ng-model="hstep"
+                                ng-options="opt for opt in options.hstep"></select>
+                    </div>
+                    <div class="col-xs-3">
+                        Minutes step:
+                        <select class="form-control" ng-model="mstep"
+                                ng-options="opt for opt in options.mstep"></select>
+                    </div>
+                </div>
+
+                <!--<div class="row">-->
+                <!--<div class="col-md-6">-->
+                <!--<!--<label>Format:</label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>-->
+
+                <!--<label>Format:</label> <input type="text" class="form-control" ng-model="format" >EEE MM/dd/yyyy-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <hr/>
+
+                <!--<input type="datetime-local" ng-model="newMessage.cardate" class="form-control" id="messageDate" ng-disabled="!currentUser">-->
+            </div>
+
+            <button type="submit" class="btn btn-primary" ng-disabled="!currentUser || !newMessage.title">Submit
+            </button>
+        </form>
+    </div>
+    <div class="col-md-7">
+        <h3>All Messages!</h3>
+        <ul>
+            <li ng-repeat="message in messages">{{message.title}} <b>by</b> {{message.cardate | date : format}} -{{message.cday}}
+                {{message.cartime | date:'shortTime' }} - {{message.user.username}}, <span
+                        am-time-ago="message.updatedAt"></span>
+                <button type="button" class="btn btn-danger btn-xs" ng-click="destroyMessage(message)"
+                        ng-show="currentUser.id === message.user.id"><i class="fa fa-trash-o"></i></button>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-12">
+    <!--<rx-data-table list-of-data="messages"-->
+                   <!--selected-color='#3CB4E7'-->
+                   <!--even-color='#ffffff'-->
+                   <!--odd-color='#3CB4E7'-->
+                   <!--row-key="id"-->
+                   <!--visibilty="true"-->
+                   <!--row-style="{class: 'item-color-mapping', field: 'severity', bool: false}"-->
+                   <!--checkbox-event="checkEvent"-->
+                   <!--column-configuration="columns"></rx-data-table>-->
+        <!--<table ng-table="tableParams" class="table">-->
+        <table ng-table="tableParams" class="table ng-table-rowselected">
+
+
+            <tbody ng-repeat="group in $groups" >
+            <tr class="ng-table-group">
+                <td colspan="{{$columns.length}}">
+                    <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                        <span class="fa" ng-class="{ 'c': group.$hideRows, 'fa-chevron-down': !group.$hideRows }"></span>
+                        <strong>{{ group.value }}</strong>
+                    </a>
+                </td>
+            </tr>
+
+            <div>
+                <strong>Selected users:</strong> {{ data | filter:{"$selected": true} }}
+            </div>
+            <button class="btn btn-default" ng-click="tableParams.data[3].$selected = true">Select 4th row</button>
+            <tr ng-hide="group.$hideRows" ng-repeat="message in group.data "  ng-class="{ 'emp': message.title == '666' }"
+                ng-click="message.$selected = !message.$selected; changeSelection(message)"
+                ng-class="{'active': message.$selected}">
+                <td sortable="title" data-title="'title'">
+                    {{message.title}}
+                </td>
+                <td data-title="'title'" sortable="title">
+                    <span ng-class="{ 'plus': message.title == '666','minus': message.title != '666' }">{{ message.title}}</span>
+                </td>
+                <td sortable="cardate" data-title="'cardate'">
+                    {{message.cardate |  date : format }}
+                </td>
+                <td sortable="cartime" data-title="'cartime'">
+                    {{message.cartime | date:'shortTime' }}
+                </td>
+                <td sortable="username" data-title="'username'">
+                    {{message.user.username  }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
