@@ -16,14 +16,17 @@
  */
 
 module.exports = {
-
+find:function(req,res)
+{
+  console.log('in find')
+},
 
     getAll: function(req, res) {
         console.log('fund getall')
         Fund.getAll()
             .spread(function(models) {
                 //console.log('socket ',req.socket.id);//req.socket)
-
+              console.log('mo ',models)
                 Fund.watch(req);
                 //  Todo.watch(req.socket, models);
                 //  Todo.subscribe(req.socket, models);

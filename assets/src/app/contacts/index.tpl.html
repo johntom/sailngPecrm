@@ -1,0 +1,41 @@
+<h2>Contacts</h2>
+<p>Open this page in two browsers and see how easy Sails.js makes realtime applications!</p>
+
+<div class="row">
+    <div class="col-md-4">
+        <form role="form" ng-submit="createTodo(newTodo)">
+            <div class="form-group">
+                <label for="todoTitle">Your Contacts</label>
+                <input type="text" ng-model="newTodo.title" class="form-control" id="todoTitle" >
+            </div>
+            <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+            <button type="submit" class="btn btn-primary" ng-disabled="!currentUser" >Submit
+            </button>
+        </form>
+    </div>
+
+    <div class="col-md-12">
+
+        <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+        <p><strong>Sorting:</strong> {{tableParams.sorting()|json}}
+
+        <table ng-table="tableParams" class="table">
+            <tr ng-repeat="contact in  $data">
+
+                <td data-title="'Contact'" sortable="'Contact'">
+                    <span ng-class="{ 'plus': contact.Contact == '666','minus': contact.Contact != '666' }">{{ contact.Contact}}</span>
+                </td>
+                <td data-title="'Company'" sortable="'Company'">
+                    <span ng-class="{ 'fa fa-info-circle': contact.Company == '666','fa fa-dot-circle-o': contact.Company != '666' }">{{ contact.Company}}</span>
+                </td>
+                <td  data-title="'Address1'" sortable="'Address1'">
+                    {{contact.Address1 }}
+                </td>
+
+
+            </tr>
+        </table>
+
+    </div>
+
+</div>

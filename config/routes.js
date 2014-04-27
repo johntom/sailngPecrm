@@ -70,6 +70,7 @@ module.exports.routes = {
 
 
     //fund
+
     'get /api/fund': 'FundController.getAll',
     'get /api/fund/:id': 'FundController.getOne',
     'post /api/fund': 'FundController.create',

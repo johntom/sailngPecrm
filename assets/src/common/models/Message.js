@@ -1,6 +1,20 @@
 angular.module('models.message', ['lodash', 'services', 'ngSails',])
 
 .service('MessageModel', function($q, lodash, utils, $sails) {
+
+        // use blueprints
+        this.find = function() {
+            var deferred = $q.defer();
+            //var url = utils.prepareUrl('deal');
+            var url = '/contacts';
+            console.log('url ;',url)
+            $sails.get(url, function(models) {
+                return deferred.resolve(models);
+            });
+
+            return deferred.promise;
+        };
+
 	this.getAll = function() {
         console.log ('MessageModel ')
 		var deferred = $q.defer();

@@ -16,7 +16,9 @@ angular.module( 'sailng', [
 	'sailng.about',
 	'sailng.messages',
     'sailng.todos',
-    'sailng.funds'
+    'sailng.funds',
+    'sailng.deals',
+    'sailng.contacts'
 
 
   //  'sailng.deals',

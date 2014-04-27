@@ -8,6 +8,8 @@ angular.module( 'sailng.header', [
         {title: 'Messages', translationKey: 'navigation:messages', url: '/messages', cssClass: 'fa fa-comments'},
         {title: 'Todos', translationKey: 'navigation:todos', url: '/todos', cssClass: 'fa fa-comments'},
         {title: 'Funds', translationKey: 'navigation:funds', url: '/funds', cssClass: 'fa fa-comments'},
+        {title: 'Deals', translationKey: 'navigation:deals', url: '/deals', cssClass: 'fa fa-comments'},
+        {title: 'Contact', translationKey: 'navigation:contacts', url: '/contacts', cssClass: 'fa fa-comments'},
 
         {title: 'About', translationKey: 'navigation:about', url:'/about',cssClass: 'fa fa-info-circle'}
     ];

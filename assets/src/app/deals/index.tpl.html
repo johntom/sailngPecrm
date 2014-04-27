@@ -1,0 +1,46 @@
+<h2>Deals</h2>
+<p>Open this page in two browsers and see how easy Sails.js makes realtime applications!</p>
+
+<div class="row">
+    <div class="col-md-4">
+        <form role="form" ng-submit="createTodo(newTodo)">
+            <div class="form-group">
+                <label for="todoTitle">Your Deals</label>
+                <input type="text" ng-model="newTodo.title" class="form-control" id="todoTitle" >
+            </div>
+            <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+            <button type="submit" class="btn btn-primary" ng-disabled="!currentUser" >Submit
+            </button>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <h3>All Todos</h3>
+        <ul>
+            <li ng-repeat="todo in todos">{{todo.title}} <b>by</b> {{todo.user.username }}, <span am-time-ago="todo.updatedAt"></span> - <button type="button" class="btn btn-danger btn-xs" ng-click="destroyTodo(todo)"><i class="fa fa-trash-o"></i></button></li>
+        </ul>
+    </div>
+    <div class="col-md-12">
+
+        <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+        <p><strong>Sorting:</strong> {{tableParams.sorting()|json}}
+
+        <table ng-table="tableParams" class="table">
+            <tr ng-repeat="deal in  $data">
+
+                <td data-title="'DealName'" sortable="'DealName'">
+                    <span ng-class="{ 'plus': deal.DealName == '666','minus': deal.DealName != '666' }">{{ deal.DealName}}</span>
+                </td>
+                <td data-title="'DealAmt'" sortable="'DealAmt'">
+                    <span ng-class="{ 'fa fa-info-circle': deal.DealAmt == '666','fa fa-dot-circle-o': deal.title != '666' }">{{ deal.DealAmt}}</span>
+                </td>
+                <td  data-title="'Used'" sortable="'Used'">
+                    {{deal.Used }}
+                </td>
+
+
+            </tr>
+        </table>
+
+    </div>
+
+</div>
