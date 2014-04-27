@@ -67,8 +67,6 @@ module.exports.routes = {
     'post /api/todo': 'TodoController.create',
     'delete /api/todo/:id': 'TodoController.destroy',
 
-
-
     //fund
 
     'get /api/fund': 'FundController.getAll',
@@ -76,16 +74,13 @@ module.exports.routes = {
     'post /api/fund': 'FundController.create',
     'delete /api/fund/:id': 'FundController.destroy',
 
-
-
-
-    // If a request to a URL doesn't match any of the custom routes above, it is matched
+  // If a request to a URL doesn't match any of the custom routes above, it is matched
   // against Sails route blueprints.  See `config/blueprints.js` for configuration options
   // and examples.
 
   'get /home': 'HomeController.index',
   'get /about': 'HomeController.index',
   'get /messages': 'HomeController.index',
-    'get /todos': 'HomeController.index'
+  'get /todos': 'HomeController.index'
 
 };

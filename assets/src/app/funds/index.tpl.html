@@ -18,15 +18,13 @@
         <table ng-table="tableParams" class="table">
             <tr ng-repeat="fund in  $data">
 
-                <td data-title="'Fund Name'" sortable="'title'">
-                    <span ng-class="{ 'plus': message.title == '666','minus': fund.title != '666' }">{{ fund.title}}</span>
+                <td data-title="'FundName'" sortable="'FundName'">
+                    <span ng-class="{ 'plus': message.title == '666','minus': fund.FundName != '666' }">{{ fund.FundName}}</span>
                 </td>
-                <td data-title="'title'" sortable="'title'">
-                    <span ng-class="{ 'fa fa-info-circle': fund.title == '666','fa fa-dot-circle-o': todo.title != '666' }">{{ fund.title}}</span>
+                <td data-title="'FundAmt'" sortable="'FundAmt'">
+                    <span ng-class="{ 'fa fa-info-circle': fund.title == '666','fa fa-dot-circle-o': fund.FundAmt != '666' }">{{ fund.FundAmt}}</span>
                 </td>
-                <td  data-title="'isComplete'" sortable="'isComplete'">
-                    {{fund.isComplete }}
-                </td>
+
 
 
             </tr>
