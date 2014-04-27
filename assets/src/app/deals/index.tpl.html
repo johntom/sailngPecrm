@@ -1,24 +1,23 @@
 <h2>Deals</h2>
-<p>Open this page in two browsers and see how easy Sails.js makes realtime applications!</p>
 
 <div class="row">
-    <div class="col-md-4">
-        <form role="form" ng-submit="createTodo(newTodo)">
-            <div class="form-group">
-                <label for="todoTitle">Your Deals</label>
-                <input type="text" ng-model="newTodo.title" class="form-control" id="todoTitle" >
-            </div>
-            <!--<button type="submit" class="btn btn-primary">Submit</button>-->
-            <button type="submit" class="btn btn-primary" ng-disabled="!currentUser" >Submit
-            </button>
-        </form>
-    </div>
-    <div class="col-md-8">
-        <h3>All Todos</h3>
-        <ul>
-            <li ng-repeat="todo in todos">{{todo.title}} <b>by</b> {{todo.user.username }}, <span am-time-ago="todo.updatedAt"></span> - <button type="button" class="btn btn-danger btn-xs" ng-click="destroyTodo(todo)"><i class="fa fa-trash-o"></i></button></li>
-        </ul>
-    </div>
+    <!--<div class="col-md-4">-->
+        <!--<form role="form" ng-submit="createTodo(newTodo)">-->
+            <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<label for="todoTitle">Your Deals</label>&ndash;&gt;&ndash;&gt;-->
+               <!--&lt;!&ndash;&lt;!&ndash;<input type="text" ng-model="newTodo.title" class="form-control" id="todoTitle" >&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button type="submit" class="btn btn-primary">Submit</button>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button type="submit" class="btn btn-primary" ng-disabled="!currentUser" >Submit&ndash;&gt;-->
+            <!--&lt;!&ndash;</button>&ndash;&gt;-->
+        <!--</form>-->
+    <!--</div>-->
+    <!--<div class="col-md-8">-->
+        <!--<h3>All Deals</h3>-->
+        <!--<ul>-->
+            <!--<li ng-repeat="todo in todos">{{todo.title}} <b>by</b> {{todo.user.username }}, <span am-time-ago="todo.updatedAt"></span> - <button type="button" class="btn btn-danger btn-xs" ng-click="destroyTodo(todo)"><i class="fa fa-trash-o"></i></button></li>-->
+        <!--</ul>-->
+    <!--</div>-->
     <div class="col-md-12">
 
         <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
